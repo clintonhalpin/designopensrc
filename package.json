@@ -1,0 +1,12 @@
+{
+  "name": "designopensrc",
+  "version": "0.0.0",
+  "description": "Connecting open source projects with designers.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/clintonhalpin/designopensrc.git"
+  },
+  "author": "clintonhalpin@gmail.com",
+  "license": "MIT"
+}
