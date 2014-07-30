@@ -1,0 +1,10 @@
+{
+  "name": "designopensrc",
+  "version": "0.0.0",
+  "homepage": "https://github.com/clintonhalpin/designopensrc",
+  "authors": [
+    "clintonhalpin <clintonhalpin@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true
+}
