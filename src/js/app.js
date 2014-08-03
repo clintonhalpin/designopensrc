@@ -2,72 +2,40 @@
 
 (function () {
 
-  function Auth($firebase, $firebaseSimpleLogin, $q, $timeout) {
-    var ref = new Firebase("https://popping-fire-1726.firebaseio.com/");
-    var simpleLogin = $firebaseSimpleLogin(ref);
-
-    var getCurrentUser = function() {
-      var deferred = $q.defer();
-
-      simpleLogin.$getCurrentUser()
-      .then(function(user) {
-        if ( user ) {
-          deferred.resolve(user);
-        } else {
-          return false 
-        }
-      });
-
-      return deferred.promise;
-    };
-
-    var logout = function() {
-      simpleLogin.$logout();
-    }
-
-    var login = function() {
-      var deferred = $q.defer();
-
-      simpleLogin.$login( 'github' )
-      .then(function(user) {
-        if ( user ) {
-          deferred.resolve(user);
-        } else {
-          return false 
-        }
-      });
-
-      return deferred.promise;
-    };
-
-
-    return {
-      getCurrentUser : getCurrentUser,
-      logout : logout,
-      login : login
-    };
+  function Sync($firebase) {
+    var data = new Firebase("https://popping-fire-1726.firebaseio.com/publicData");
+    var sync = $firebase(data);
+    return sync;
   }
 
-  function indexCtrl( $scope, $state, Auth, $firebase, $firebaseSimpleLogin ) {
+  function Auth($firebase, $firebaseSimpleLogin) {
+    var ref = new Firebase("https://popping-fire-1726.firebaseio.com/");
+    return $firebaseSimpleLogin(ref);
+  }
+
+  function indexCtrl( $scope, $state, Auth, currentUser, Sync) {
     this.name = "Design Open Src";
-    this.currentUser = false;
+    this.auth = Auth; 
+    $scope.users = Sync.$asArray();
+    console.log($scope.sync);
 
-    Auth.getCurrentUser().then(function(user) {
-      $scope.currentUser = user;
-    });
 
-    this.logout = function() {
-      Auth.logout();
-      $state.go($state.current, {}, {reload: true});  
-    }
-
+  
+    
     this.login = function() {
-      Auth.login().then(function(user) {
-        $scope.currentUser = user;
-        console.log(user)
+      this.auth.$login('github')
+      .then(function(user) {
+        console.log(user);
+        $scope.users.$add({ 
+          "uid" : user.uid,
+          "data" : user.thirdPartyUserData
+        });
       });
     }
 
+    this.logout = function() {
+      this.auth.$logout(); 
+    }
   }
 
   function config($stateProvider, $urlRouterProvider) {
@@ -77,7 +45,12 @@
       url: "/",
       templateUrl: 'components/index/index.html',
       controller: 'indexCtrl',
-      controllerAs: 'ctrl'
+      controllerAs: 'ctrl',
+      resolve: {
+        "currentUser": ["Auth", function(Auth) {
+          return Auth.$getCurrentUser();
+        }]
+      }
     })
   }
 
@@ -85,6 +58,6 @@
 
   app.config(config);
   app.controller('indexCtrl', indexCtrl, [ 'Auth' ]);
-  app.service('Auth', Auth, [ '$firebase', '$firebaseSimpleLogin' ]);
-
+  app.factory('Auth', Auth, [ '$firebase', '$firebaseSimpleLogin' ]);
+  app.factory('Sync', Sync, [ '$firebase' ]);
 })();
