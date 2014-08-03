@@ -17,10 +17,6 @@
     this.name = "Design Open Src";
     this.auth = Auth; 
     $scope.users = Sync.$asArray();
-    console.log($scope.sync);
-
-
-  
     
     this.login = function() {
       this.auth.$login('github')
@@ -33,7 +29,8 @@
       });
     }
 
-    this.logout = function() {
+    this.destroy = function() {
+      console.log("holler");
       this.auth.$logout(); 
     }
   }
