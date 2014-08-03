@@ -1,0 +1,20 @@
+<header class="p4 width-full bg-dark-gray">
+  <p class="white inline-block m0">{{ ctrl.name }}</p>
+  <span ng-hide="currentUser">
+    <a class="button button-blue right" href="#" ng-click="ctrl.login()">Login with Github</a>
+  </span>
+  <span ng-show="currentUser">
+    <a class="button bg-red right white" href="#" ng-click="ctrl.logout()">Remove me From this Project</a>
+  </span>
+</header>
+<section class="p4">
+  <p>Designers willing to help out with open source projects</p>
+  <div class="mobile-table">
+    <div class="mobile-table-cell p1">
+      <img class="width-5 height-5" ng-src="{{ currentUser.thirdPartyUserData.avatar_url}}">
+    </div>
+    <div class="mobile-table-cell full-width">{{ currentUser.displayName }}</div>
+  </div>
+  </div>
+</section>
+
