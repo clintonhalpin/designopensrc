@@ -5,7 +5,10 @@
   function Sync($firebase) {
     var data = new Firebase("https://popping-fire-1726.firebaseio.com/publicData");
     var sync = $firebase(data);
-    return sync;
+    return {
+      sync : sync,
+      data : data
+    }
   }
 
   function Auth($firebase, $firebaseSimpleLogin) {
@@ -13,15 +16,21 @@
     return $firebaseSimpleLogin(ref);
   }
 
-  function indexCtrl( $scope, $state, Auth, currentUser, Sync) {
+  function indexCtrl( $scope, $state, Auth, currentUser, Sync, $firebase) {
     this.name = "Design Open Src";
     this.auth = Auth; 
-    $scope.users = Sync.$asArray();
+    $scope.users = Sync.sync.$asArray();
+
+    $scope.users.$loaded()
+      .then(function(data) {
+        for( var i = 0; i < data.length; i ++){
+          console.log(data[i].uid);
+        }
+      });
     
     this.login = function() {
       this.auth.$login('github')
       .then(function(user) {
-        console.log(user);
         $scope.users.$add({ 
           "uid" : user.uid,
           "data" : user.thirdPartyUserData
@@ -30,7 +39,17 @@
     }
 
     this.destroy = function() {
-      console.log("holler");
+      this.auth.$getCurrentUser()
+      .then(function(user) {
+        var uid = user.uid;
+        $scope.users.$loaded(function (data) {
+          for ( var i = 0; i < data.length; i++) {
+            if ( uid === data[i].uid ) {
+              $scope.users.$remove(data[i]);
+            }
+          }
+        });
+      })
       this.auth.$logout(); 
     }
   }
