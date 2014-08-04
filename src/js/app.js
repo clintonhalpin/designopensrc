@@ -17,17 +17,9 @@
   }
 
   function indexCtrl( $scope, $state, Auth, currentUser, Sync, $firebase) {
-    this.name = "Design Open Src";
     this.auth = Auth; 
     $scope.users = Sync.sync.$asArray();
 
-    $scope.users.$loaded()
-      .then(function(data) {
-        for( var i = 0; i < data.length; i ++){
-          console.log(data[i].uid);
-        }
-      });
-    
     this.login = function() {
       this.auth.$login('github')
       .then(function(user) {
@@ -52,6 +44,7 @@
       })
       this.auth.$logout(); 
     }
+
   }
 
   function config($stateProvider, $urlRouterProvider) {
@@ -71,7 +64,6 @@
   }
 
   var app = angular.module('app', ['ui.router', 'firebase' ]);
-
   app.config(config);
   app.controller('indexCtrl', indexCtrl, [ 'Auth' ]);
   app.factory('Auth', Auth, [ '$firebase', '$firebaseSimpleLogin' ]);

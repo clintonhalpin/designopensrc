@@ -20,3 +20,29 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+.word-break {
+  word-break: break-word;
+}
+
+@media screen and (max-width: 48em) {
+
+  header.p4,
+  section.p4 {
+    padding: 1rem;
+  }
+
+  header.p4 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  p.m4 {
+    margin: 1rem;
+  }
+
+  div.mt4 {
+    margin-top: 2rem;
+  }
+
+}
