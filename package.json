@@ -1,7 +1,7 @@
 {
   "name": "designopensrc",
   "version": "0.0.0",
-  "description": "",
+  "description": "Connecting open source projects with designers.",
   "repository": {
     "type": "git",
     "url": "git://github.com/clintonhalpin/designopensrc.git"
@@ -11,5 +11,15 @@
   "bugs": {
     "url": "https://github.com/clintonhalpin/designopensrc/issues"
   },
-  "homepage": "https://github.com/clintonhalpin/designopensrc"
+  "homepage": "https://github.com/clintonhalpin/designopensrc",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.6.5",
+    "errorhandler": "^1.1.1",
+    "express": "^4.8.5",
+    "method-override": "^2.1.3"
+  }
 }
