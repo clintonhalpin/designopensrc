@@ -1,0 +1,25 @@
+<header class="p4 width-full bg-dark-gray">
+  <div class="center white">
+    <h1 class="caps word-break">designopensrc</h1>
+    <p class="mb3">A list of awesome designers willing to work on Open Src projects<br /> created by <a href="http://twitter.com/clintonhalpin">@clintonhalpin</a></p>
+    <div class="inline-block" ng-hide="ctrl.auth.user">
+      <a class="button button-big button-gray right inline-block" href="#" ng-click="ctrl.login()">Apply with Github</a>
+    </div>
+    <div class="inline-block" ng-show="ctrl.auth.user">
+     <a class="button button-big button-gray right inline-block" href="#" ng-click="ctrl.destroy()">Remove Me</a>
+    </div>
+</header>
+<section class="p4 max-width m-center">
+  <div ng-repeat="user in users" class="border mb1 rounded">
+    <div class="mobile-table-cell p1 pb0 m0">
+      <img class="width-5 height-5 rounded m0" ng-src="{{ user.data.avatar_url}}">
+    </div>
+    <div class="mobile-table-cell full-width">
+      <h3 class="m0 blue"><a href="{{ user.data.html_url }}">{{ user.data.login }}</a></h3>
+      <p class="m0 dark-gray"><span class="italic mid-gray">Location</span> {{ user.data.location }} <span class="italic mid-gray">Public Repos</span> {{ user.data.public_repos }}</p>
+    </div>
+  </div>
+  <div class="mid-gray center mt4">
+    <p class="m4">DesignOpenSrc is a list of designers who are willing to help with open source projects. If you'd like to be added to this list sign in with Github above. For more info, please contact clintonhalpin(at)gmail.com</p>
+  </div>
+</section>
