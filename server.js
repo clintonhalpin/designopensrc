@@ -2,11 +2,13 @@ var express = require("express"),
 app = express(),
 bodyParser = require('body-parser'),
 errorHandler = require('errorhandler'),
-methodOverride = require('method-override'),
-port = parseInt(process.env.PORT, 10) || 9000;
+methodOverride = require('method-override');
 
-
-console.log('process.env.NODE_ENV = ' + process.env.NODE_ENV);
+if ( process.env.NODE_ENV === 'production' ) {
+  port = 9001;
+} else {
+  port = parseInt(process.env.PORT, 10) || 9000;
+}
 
 app.get("/", function (req, res) {
   res.redirect("/index.html");
