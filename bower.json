@@ -16,7 +16,7 @@
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.10",
     "angularfire": "~0.8.0",
-    "normalize-css": "~3.0.1"
+    "normalize-css": "~3.0.1",
     "basscss": "*"
   }
 }
