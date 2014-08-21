@@ -11,9 +11,9 @@
 </header>
 <section class="px4 py3 max-width m-center">
   <div class="nav mobile-nav-table nav-table-fixed center full-width nav-segments mb3">
+    <a href="#" ng-class="{'active' : ctrl.order === 'data.login'}" ng-click="ctrl.setOrder('data.login')">Name</a>
     <a href="#" ng-class="{'active' : ctrl.order === 'data.public_repos'}" ng-click="ctrl.setOrder('data.public_repos')"># Public Repos</a>
     <a href="#" ng-class="{'active' : ctrl.order === 'data.location'}" ng-click="ctrl.setOrder('data.location')">Location</a>
-    <a href="#" ng-class="{'active' : ctrl.order === 'data.login'}" ng-click="ctrl.setOrder('data.login')">Name</a>
   </div>
   <div ng-repeat="user in users | orderBy: ctrl.order" class="border mb1 rounded">
     <div class="mobile-table-cell p1 pb0 m0">
