@@ -18,6 +18,7 @@
 
   function indexCtrl( $scope, $state, Auth, currentUser, Sync, $firebase) {
     this.auth = Auth; 
+    this.order = 'data.login';
     $scope.users = Sync.sync.$asArray();
 
     this.login = function() {
@@ -44,6 +45,11 @@
       })
       this.auth.$logout(); 
     }
+
+    this.setOrder = function (order) {
+        this.order = order;
+    };
+
 
   }
 

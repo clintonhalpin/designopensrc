@@ -1,7 +1,7 @@
 <header class="p4 width-full bg-dark-gray">
   <div class="center white">
     <h1 class="caps word-break">designopensrc</h1>
-    <p class="mb3">A list of awesome designers willing to work on Open Src projects<br /> created by <a href="http://twitter.com/clintonhalpin">@clintonhalpin</a></p>
+    <p class="mb3">A list of <span ng-cloak>{{ users.length }}</span> awesome designers willing to work on Open Src projects<br /> created by <a href="http://twitter.com/clintonhalpin">@clintonhalpin</a></p>
     <div class="inline-block" ng-hide="ctrl.auth.user">
       <a class="button button-big button-gray right inline-block" href="#" ng-click="ctrl.login()">Apply with Github</a>
     </div>
@@ -9,8 +9,13 @@
      <a class="button button-big button-gray right inline-block" href="#" ng-click="ctrl.destroy()">Remove Me</a>
     </div>
 </header>
-<section class="p4 max-width m-center">
-  <div ng-repeat="user in users" class="border mb1 rounded">
+<section class="px4 py3 max-width m-center">
+  <div class="nav mobile-nav-table nav-table-fixed center full-width nav-segments mb3">
+    <a href="#" ng-class="{'active' : ctrl.order === 'data.public_repos'}" ng-click="ctrl.setOrder('data.public_repos')"># Public Repos</a>
+    <a href="#" ng-class="{'active' : ctrl.order === 'data.location'}" ng-click="ctrl.setOrder('data.location')">Location</a>
+    <a href="#" ng-class="{'active' : ctrl.order === 'data.login'}" ng-click="ctrl.setOrder('data.login')">Name</a>
+  </div>
+  <div ng-repeat="user in users | orderBy: ctrl.order" class="border mb1 rounded">
     <div class="mobile-table-cell p1 pb0 m0">
       <img class="width-5 height-5 rounded m0" ng-src="{{ user.data.avatar_url}}">
     </div>
