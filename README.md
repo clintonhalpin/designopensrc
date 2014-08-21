@@ -20,5 +20,5 @@ node server
 Running the app in production
 
 ```shell
-NODE_ENV=production node server
+NODE_ENV=production forever start --spinSleepTime 10000 server.js
 ```
