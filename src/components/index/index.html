@@ -28,19 +28,16 @@
   <li class="db ta-c p2"><a class="td-none gray py2 hover-blue" href="#">Edit Profile</a></li>
 </ul>
 
-
-<div class="contents mt2">
+<div class="contents">
   <div class="white bg-midnightgray m1 p3 rounded"><p class="ta-c m0">A list of {{ users.length }} awesome designers willing to work on Open Src projects created by <a href="http://twitter.com/clintonhalpin">@clintonhalpin</a></p></div>
   <div ng-repeat="user in users" class="gray bg-white m1 b1 bc-l bs rounded">
     <div class="mobile-table-cell p1 pb0 m0">
       <img class="wi-80px rounded m0" ng-src="{{ user.data.avatar_url}}">
     </div>
     <div class="mobile-table-cell full-width">
-      <h3 class="m0 blue"><a href="{{ user.data.html_url }}">{{ user.data.login }}</a></h3>
+      <p class="m0 blue"><a href="{{ user.data.html_url }}">{{ user.data.login }}</a></>
       <p class="m0 dark-gray"><span class="italic mid-gray">Location</span> {{ user.data.location }} <span class="italic mid-gray">Public Repos</span> {{ user.data.public_repos }}</p>
     </div>
   </div>
-  <div class="mid-gray center mt4">
-    <p class="m4">DesignOpenSrc is a list of designers who are willing to help with open source projects. If you'd like to be added to this list sign in with Github above. For more info, please contact clintonhalpin(at)gmail.com</p>
-  </div>
+  <div class="white bg-midnightgray m1 p3 rounded"><p class="ta-c m0">DesignOpenSrc is a list of designers who are willing to help with open source projects. If you'd like to be added to this list sign in with Github above. For more info, please contact clintonhalpin(at)gmail.com</div>
 </div>
