@@ -8,8 +8,8 @@
   </defs>
 </svg>
 
-<header class="bg-midnightgray m0 p1 fss wi-100 b0 bbottom bc bs">
-  <a class="burger mobile-only hover-blue-fill dib layer2" href="#">
+<header class="bg-midnightgray m0 p1 wi-100 b0 bbottom bc bs">
+<a class="burger mobile-only hover-blue-fill dib layer2" ng-click="menuOpen = !menuOpen">
     <i class="icon fill-white dib va-middle mr1 mobile-only"><svg x="0px" y="0px" viewBox="0 0 14 14" class="icon hover-blue-fill"><use xlink:href="#burger"></use></svg></i>
   </a>
   <a class="m0 td-none white uppercase ls-2 dib hover-blue va-middle mr2 logo layer1" href="#">Designopensrc</a>
@@ -21,7 +21,7 @@
   <a class="authentication m0 td-none white fr hover-blue" href="#">Sign In</a>
 </header>
 
-<ul class="mobile-menu bg-midnightgray m0 p0 gray hidden fss">
+<ul class="mobile-menu bg-midnightgray m0 p0 gray hidden fss" ng-class="{ 'menu-open' : menuOpen }">
   <li class="db ta-c p2 b0 bbottom bc bs"><a class="fw-700 td-none white py2" href="#">Designers</a></li>
   <li class="db ta-c p2 b0 bbottom bc bs"><a class="td-none gray py2 hover-blue" href="#">Projects</a></li>
   <li class="db ta-c p2 b0 bbottom bc bs"><a class="td-none gray py2 hover-blue" href="#">About</a></li>

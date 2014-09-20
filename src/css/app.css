@@ -270,7 +270,7 @@ body {
     margin-right: 0;
   }
   
-  .menu-open .mobile-menu {
+  .menu-open {
     display: block;
   }
   
