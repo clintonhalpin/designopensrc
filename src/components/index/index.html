@@ -29,7 +29,11 @@
 </ul>
 
 <div class="contents">
-  <div class="white bg-midnightgray m1 p3 rounded"><p class="ta-c m0">A list of {{ users.length }} awesome designers willing to work on Open Src projects created by <a href="http://twitter.com/clintonhalpin">@clintonhalpin</a></p></div>
+  <div class="white bg-midnightgray m1 p3 rounded ta-c">
+    <p class="m0">A list of {{ users.length }} awesome designers willing to work on Open Src projects created by <a href="http://twitter.com/clintonhalpin">@clintonhalpin</a></p>
+    <a href="#" ng-click="ctrl.login()" ng-hide="ctrl.auth.user" class="btn mt2">Apply with Github</a>
+    <a href="#" ng-click="ctrl.destroy()" ng-show="ctrl.auth.user" class="btn mt2">Remove Me</a>
+  </div>
   <div ng-repeat="user in users" class="gray bg-white m1 b1 bc-l bs rounded">
     <div class="mobile-table-cell p1 pb0 m0">
       <img class="wi-80px rounded m0" ng-src="{{ user.data.avatar_url}}">

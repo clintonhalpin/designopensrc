@@ -20,6 +20,31 @@ body {
   margin-right: auto;
 }
 
+/* Buttons */
+
+a.btn {
+  text-decoration: none;
+}
+
+.btn {
+  background: #0096CC;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 8px 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #036C91;
+  color: white;
+}
+
+.btn:active {
+  background: #036C91;
+  color: white;
+}
+
 /* Font-Size */
 
 .fss {
