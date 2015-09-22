@@ -1,0 +1,15 @@
+{
+  "name"             : "designopensrc",
+  "script"           : "server.js",
+  "min_uptime"       : "200s",
+  "max_memory_restart": "1M", // 1 megabytes, e.g.: "2G", "10M", "100K", 1024 the default unit is byte.
+  "watch"            : true,
+  "ignore_watch"      : ["[\\/\\\\]\\./", "node_modules"],
+  "merge_logs"       : true,
+  "exec_interpreter" : "node",
+  "exec_mode"        : "fork",
+  "autorestart"      : true, // enable/disable automatic restart when an app crashes or exits
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
